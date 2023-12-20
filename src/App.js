@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Drawer from './components/Drawer'
 
 function App() {
+  {console.log(5+1)}
   const [cartOpened, setCartOpened] = React.useState(false)
   const [items, setItems] = React.useState([])
   const [itemsCart, setItemsCart] = React.useState([])
