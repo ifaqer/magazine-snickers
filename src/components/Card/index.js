@@ -2,7 +2,7 @@ import styles from  './Card.module.scss'
 import Axios from 'axios'
 import React from 'react'
 
-function Card({image, name, price, onPlus, obj, itemsCart}){
+function Card({image, name, price, onPlus, obj, itemsCart,}){
 
   const [isAdded, setIsAdded] = React.useState(false) // Добавить в корзину
   const [isFavorite, setIsFavorite] = React.useState(false) // Добавить в избранное

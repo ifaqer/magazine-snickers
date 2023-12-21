@@ -11,7 +11,6 @@ function Header(props){
         <ul className='headerRight d-flex'>
           <li className='mr-30 cu-p' onClick={props.cartOpen}>
           <img width="18" height="18" src='/img/cart.svg' className='mr-10'/>
-            <span>1205 руб.</span>
           </li>
           <li>
           <img width="18" height="18" src='/img/user.svg'/>
