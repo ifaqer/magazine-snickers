@@ -1,7 +1,7 @@
 function Header(props){
     return(
         <header className='d-flex justify-between align-center p-40'> 
-        <div className='d-flex justify-between align-center'>
+        <div className='headerLeft d-flex justify-between align-center'>
           <img width="40" height="40" src='/img/logo.png' className='mr-15'/>
           <div className=''> 
             <h3 className='text-uppercase'>React Sneakers</h3>
