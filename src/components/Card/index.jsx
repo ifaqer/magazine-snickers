@@ -23,9 +23,9 @@ function Card({image, name, price, onPlus, obj, itemsCart, setItemsCart}){
     return(
         <div className={styles.card}>
           <div className={styles.favorite}><img src={isFavorite ? '/img/liked.svg' : '/img/heart.svg'} onClick={onClickFavorite}/></div>
-          <div className='d-flex flex-column'>  
+          <div className='d-flex flex-column justify-between'>  
           <img width="133" height="112" src={image}/>
-          <p>{name}</p>
+          <p style={{height: 45, paddingBottom: 10}}>{name}</p>
           <div className='d-flex justify-between align-center'>
             <div className='d-flex flex-column'>
               <span>Цена:</span>
