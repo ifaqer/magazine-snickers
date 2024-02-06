@@ -26,7 +26,7 @@ function Drawer({cartClose, itemsCart, setItemsCart}){
               {allPrice(Number(val.price))}
               <b>{val.price} руб.</b>
             </div>
-            <img src='/img/btn-remove.svg' alt='Remove' onClick={()  => removeItem(val)} className='removeBtn'/>
+            <img src='/img/btn-remove.svg' alt='Remove' onClick={()  => removeItem(val)} className={styles.removeBtn}/>
           </div>
           ))}
           </div>

@@ -38,6 +38,7 @@ function App() {
             image={val.image}
             obj={val}
             itemsCart={itemsCart}
+            setItemsCart={setItemsCart}
             onPlus={(obj) => {setItemsCart((prev) => [...prev, obj])}}
             />)}
         </div>
