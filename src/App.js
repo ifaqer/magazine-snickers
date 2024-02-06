@@ -9,7 +9,7 @@ function App() {
   const [items, setItems] = React.useState([]) // Карточки на странице
   const [itemsCart, setItemsCart] = React.useState([]) // Товары из корзины
   const [search, setSearch] = React.useState('') // Поиск - фильтрация!
-  const [fullPrice, setFullPrice] = React.useState(0)
+  const [fullPrice, setFullPrice] = React.useState(0) // Сумма выбранных
   React.useEffect(() => {
     Axios.get('https://655e7c6d879575426b43950e.mockapi.io/items').then(res => {setItems(res.data)}) // БД всех карточек на странице
     Axios.get('https://655e7c6d879575426b43950e.mockapi.io/cart').then(res => {setItemsCart(res.data)}) // БД добавленных товаров в корзину
