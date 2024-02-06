@@ -7,9 +7,7 @@ function Drawer({cartClose, itemsCart, setItemsCart}){
     fullPrice = fullPrice + price
   }
   const removeItem = (obj) => {
-    Axios.delete(`https://655e7c6d879575426b43950e.mockapi.io/cart/${obj.id}`)
-    itemsCart.splice(itemsCart.indexOf(obj), 1)
-    setItemsCart([...itemsCart])
+    setItemsCart(itemsCart.filter((item)=>item != obj))
   }
 
     return(

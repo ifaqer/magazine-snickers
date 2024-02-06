@@ -2,20 +2,15 @@ import styles from  './Card.module.scss'
 import Axios from 'axios'
 import React from 'react'
 
-function Card({image, name, price, onPlus, obj, itemsCart, setItemsCart}){
-
+function Card({image, name, price, onPlus, onNotPlus, obj, itemsCart, setItemsCart}){
   const [isAdded, setIsAdded] = React.useState(false) // Добавить в корзину
   const [isFavorite, setIsFavorite] = React.useState(false) // Добавить в избранное
-  
+
   const onClickAdded = () => {
-    if (isAdded == false && itemsCart.includes(obj) == false){
-      Axios.post('https://655e7c6d879575426b43950e.mockapi.io/cart', obj) // Добавим на сервер
-      onPlus(obj) // Добавим в корзину
-    } else {
-      itemsCart.splice(itemsCart.indexOf(obj), 1) // Удалим из корзины
-    }
+    isAdded ? onNotPlus(obj) : onPlus(obj)
     setIsAdded(!isAdded)
   }
+
   const onClickFavorite = () => {
     setIsFavorite(!isFavorite)
   }
