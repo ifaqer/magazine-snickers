@@ -1,9 +1,10 @@
 import React from 'react'
 import Axios from 'axios'
-import Card from './components/Card'
 import Header from './components/Header'
 import Drawer from './components/Drawer'
 import { Routes, Route, Link } from 'react-router-dom'
+import Home from "./pages/Home"
+import Favorite from "./pages/Favorite"
 
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false) // Открытие корзины
@@ -27,52 +28,21 @@ function App() {
       {cartOpened && <Drawer setItemsCart={setItemsCart} itemsCart={itemsCart} cartClose={() => {setCartOpened(false)}}/>}
       <Header fullPrice={fullPrice} cartOpen={() => {setCartOpened(true)}}/>
       <Routes>
-        <Route path='/' element={
-          <div className='content'>
-          <div className='d-flex align-center justify-between p-10'>
-          <h1 className='ml-20'>{search ? `Поиск по запросу: "${search}"` : 'Все кроссовки'}</h1>
-          <div className='search-box d-flex'>
-            <img src='/img/search.svg'/>
-            <input placeholder='Поиск...' onChange={onChangeSearchInput}></input>
-          </div>
-          </div>
-          <div className="cards d-flex flex-wrap p-15">
-            {items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((val, index) => <Card
-              key={index}
-              price={val.price}
-              name={val.name}
-              image={val.image}
-              obj={val}
-              itemsCart={itemsCart}
-              setItemsCart={setItemsCart}
-              favorite={favorite}
-              setFavorite={setFavorite}
-              onPlus={(obj) => {setItemsCart((prev) => [...prev, obj])}}
-              onNotPlus={(obj)=>{setItemsCart(itemsCart.filter((item)=>item != obj))}}
-              />)}
-          </div>
-        </div>
-        }/>
-        <Route path='/favorite' element={
-          <>
-            <h1 className='ml-20'>Мои избранные</h1>
-          <div className="cards d-flex flex-wrap p-15">
-          {favorite.map((val, index)=><Card
-          key={index}
-          price={val.price}
-          name={val.name}
-          image={val.image}
-          obj={val}
+        <Route path='/' element={<Home
+          search={search}
+          onChangeSearchInput={onChangeSearchInput}
+          items={items}
           itemsCart={itemsCart}
           setItemsCart={setItemsCart}
           favorite={favorite}
           setFavorite={setFavorite}
-          onPlus={(obj) => {setItemsCart((prev) => [...prev, obj])}}
-          onNotPlus={(obj)=>{setItemsCart(itemsCart.filter((item)=>item != obj))}}
-          />)}
-          </div>
-          </>
-        }/>
+        />}/>
+        <Route path='/favorite' element={<Favorite
+          favorite={favorite}
+          itemsCart={itemsCart}
+          setItemsCart={setItemsCart}
+          setFavorite={setFavorite}
+        />}/>
       </Routes>
     </div>
   )
