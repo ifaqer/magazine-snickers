@@ -84,3 +84,43 @@
       }
     }
   }
+.emptyBlock{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto auto;
+  height: calc(100vh - 160px);
+  p{
+   margin: 10px;
+   text-align: center;
+  }
+  .greenButton{
+    position: relative;
+    padding-left: 20px;
+    width: 85%;
+    height: 55px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: -3px 3px 2px rgba(0, 0, 0, 0.1);
+    background-color: #9DD558;
+    border: 0;
+    border-radius: 18px;
+    img{
+      position: absolute;
+      left: 40px;
+      top: 20px;
+      transition: transform 0.2s ease-in-out;
+    }
+    &:hover{
+      cursor: pointer;
+      background-color: #8ac344;
+      img{
+        transform: translateX(10px);
+        
+      }
+    }
+  }
+}

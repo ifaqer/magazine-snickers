@@ -7,7 +7,13 @@ function Card({image, name, price, onPlus, onNotPlus, obj, itemsCart, setItemsCa
   const [isFavorite, setIsFavorite] = React.useState(false) // Добавить в избранное
 
   const onClickAdded = () => {
-    isAdded ? onNotPlus(obj) : onPlus(obj)
+    if (isAdded == true){
+      onNotPlus(obj)
+      console.log(obj.id)
+    } else{
+      onPlus(obj)
+      Axios.post('https://655e7c6d879575426b43950e.mockapi.io/cart', obj)
+    }
     setIsAdded(!isAdded)
   }
 

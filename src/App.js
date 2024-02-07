@@ -33,7 +33,8 @@ function App() {
         </div>
         </div>
         <div className="cards d-flex flex-wrap p-15">
-          {items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((val) => <Card
+          {items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((val, index) => <Card
+            key={index}
             price={val.price}
             name={val.name}
             image={val.image}
