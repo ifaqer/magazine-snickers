@@ -27,8 +27,7 @@ function Card({image, name, price, onPlus, onNotPlus, obj, favorite, setFavorite
   
     return(
         <div className={styles.card}>
-          <div className={styles.favorite}><img src={window.location.href != 'http://localhost:3000/favorite' ? (isFavorite ? '/img/liked.svg' : '/img/heart.svg') : null
-          } onClick={onClickFavorite}/></div>
+          {window.location.pathname != '/favorite' && <div className={styles.favorite}><img src={isFavorite ? '/img/liked.svg' : '/img/heart.svg'} onClick={onClickFavorite}/></div>}
           <div className='d-flex flex-column justify-between'>  
           <img width="133" height="112" src={image}/>
           <p style={{height: 45, paddingBottom: 10}}>{name}</p>

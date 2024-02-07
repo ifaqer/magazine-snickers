@@ -12,7 +12,6 @@ function App() {
   const [favorite, setFavorite] = React.useState([])
   const [itemsCart, setItemsCart] = React.useState([]) // Товары из корзины
   const [search, setSearch] = React.useState('') // Поиск - фильтрация!
-  const [fullPrice, setFullPrice] = React.useState(0) // Сумма выбранных товаров!
   
   React.useEffect(() => {
     Axios.get('https://655e7c6d879575426b43950e.mockapi.io/items').then(res => {setItems(res.data)}) // БД всех карточек на странице
@@ -25,8 +24,8 @@ function App() {
 
   return(
     <div className='wrapper clear'>
-      {cartOpened && <Drawer setItemsCart={setItemsCart} itemsCart={itemsCart} fullPrice={fullPrice} setFullPrice={setFullPrice} cartClose={() => {setCartOpened(false)}}/>}
-      <Header fullPrice={fullPrice} cartOpen={() => {setCartOpened(true)}}/>
+      {cartOpened && <Drawer setItemsCart={setItemsCart} itemsCart={itemsCart} cartClose={() => {setCartOpened(false)}}/>}
+      <Header cartOpen={() => {setCartOpened(true)}}/>
       <Routes>
         <Route path='/' element={<Home
           search={search}

@@ -14,8 +14,7 @@ function Header(props){
         </Link>
         <ul className='d-flex'>
           <li className='cu-p d-flex align-start mr-20' onClick={props.cartOpen}>
-          <img width="20" height="20" src='/img/cart.svg' className='mr-10'/>
-          <p style={{margin:0}}>{`${props.fullPrice}р.`}</p>
+          <img width="20" height="20" src='/img/cart.svg'/>
           </li>
           <li className='cu-p'>
           <Link to={"/favorite"}>
