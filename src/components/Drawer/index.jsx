@@ -1,10 +1,9 @@
 import Axios from 'axios'
 import styles  from './Drawer.module.scss'
 
-function Drawer({cartClose, itemsCart, setItemsCart}){
-  let fullPrice = 0
+function Drawer({cartClose, itemsCart, setItemsCart, fullPrice, setFullPrice}){
   const allPrice = (price) => {
-    fullPrice = fullPrice + price
+    setFullPrice(0 + price)
   }
   const removeItem = (obj) => {
     setItemsCart(itemsCart.filter((item)=>item != obj))
