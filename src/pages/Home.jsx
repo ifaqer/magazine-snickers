@@ -7,7 +7,9 @@ export default function Home({
     itemsCart,
     setItemsCart,
     favorite,
-    setFavorite
+    setFavorite,
+    isReload,
+    setIsReload
 }){
     return(
         <>
@@ -20,7 +22,8 @@ export default function Home({
           </div>
           </div>
           <div className="cards d-flex flex-wrap p-15">
-            {items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((val, index) => <Card
+            {isReload ? ([...Array(7)]).map(() => <Card loading={isReload}/>) :
+              items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((val, index) => <Card
               key={index}
               price={val.price}
               name={val.name}
@@ -30,9 +33,12 @@ export default function Home({
               setItemsCart={setItemsCart}
               favorite={favorite}
               setFavorite={setFavorite}
+              added={itemsCart.some((obj)=>obj.id==val.id) ? true : false}
+              loading={isReload}
               onPlus={(obj) => {setItemsCart((prev) => [...prev, obj])}}
               onNotPlus={(obj)=>{setItemsCart(itemsCart.filter((item)=>item != obj))}}
-            />)}
+            />)
+            }
           </div>
         </div>
         </>

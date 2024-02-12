@@ -9,13 +9,22 @@ import Favorite from "./pages/Favorite"
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false) // Открытие корзины
   const [items, setItems] = React.useState([]) // Карточки на странице
-  const [favorite, setFavorite] = React.useState([])
+  const [favorite, setFavorite] = React.useState([]) //  Карточки в избранные
   const [itemsCart, setItemsCart] = React.useState([]) // Товары из корзины
   const [search, setSearch] = React.useState('') // Поиск - фильтрация!
-  
+  const [isReload, setIsReload] = React.useState(true)
+
   React.useEffect(() => {
-    Axios.get('https://655e7c6d879575426b43950e.mockapi.io/items').then(res => {setItems(res.data)}) // БД всех карточек на странице
-    Axios.get('https://655e7c6d879575426b43950e.mockapi.io/cart').then(res => {setItemsCart(res.data)}) // БД добавленных товаров в корзину
+    async function fetchData(){
+      setIsReload(true)
+      const cartResponce = await Axios.get('https://655e7c6d879575426b43950e.mockapi.io/cart') // БД добавленных товаров в корзину
+      const itemsResponce = await Axios.get('https://655e7c6d879575426b43950e.mockapi.io/items') // БД всех карточек на странице
+      setIsReload(false)
+
+      setItemsCart(cartResponce.data)
+      setItems(itemsResponce.data)
+    }
+    fetchData()
   }, [])
   
   const onChangeSearchInput = (event) => {
@@ -29,6 +38,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home
           search={search}
+          isReload={isReload}
+          setIsReload={setIsReload}
           onChangeSearchInput={onChangeSearchInput}
           items={items}
           itemsCart={itemsCart}
